@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+<body>
+    {% block pagecontent %}
+    {% if latest_post_list %}
+    <ul>
+    {% for post in latest_post_list %}
+        <li><a href="{% url 'detailpost'  post.id %}">{{ post.title }}</a></li>
+        <button class="block">Hello, World!</button>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No post are available.</p>
+{% endif %}
+    {% endblock %}
+  </body>
