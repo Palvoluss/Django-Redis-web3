@@ -3,6 +3,15 @@ from django.template import loader
 from django.shortcuts import render
 from .models import Post
 
+def home_layout(request):
+    return render(request, 'home/home_layout.html')
+
+def home_post_list(request):
+    return render(request, 'home/home_post_list.html')
+
+def home_category_list(request):
+    return render(request, 'home/home_category_list.html')
+
 def post_list(request):
     latest_post_list = Post.objects.order_by('published_date')
     template = loader.get_template('blog/post_list.html')
