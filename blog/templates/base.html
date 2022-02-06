@@ -4,20 +4,22 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Django Info Chain - {% block title %}{% endblock %}
+      Django Info Chain - {% block title%} {% endblock %}
     </title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/reset.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'css/theme.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'css/blocks.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'css/util.css' %}" type="text/css" />
+
+
   </head>
   <body>
     {% include "header.html" %}
     <div class="container">
-      {% block pagecontent %}
-      {% endblock %}
+      {% block pagecontent %}{% endblock %}
     </div>
   </body>
 </html>

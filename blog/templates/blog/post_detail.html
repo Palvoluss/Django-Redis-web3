@@ -1,1 +1,28 @@
-kfjdvn
+{% extends 'base.html' %}
+
+
+{% block pagecontent %} {% if post %}
+<div class="post-card auto-center">
+    <div class="card fixed block">
+        <h2>{{ post.title }}</h2>
+        <hr/>
+        <p class="underline f2 mb3">{{ post.description }}</p>
+        <p  class="fw3">{{ post.text }}</p>
+        <hr class="my3">
+        <div class="flex justify-end">
+            <div>
+                <span class="inline block ">
+                    {{ post.category }}
+                </span>
+            </div>
+            <span class="inline block ">
+                {{ post.author }}
+            </span>
+        </div>
+    </div>
+  {% else %}
+  <p>No post are available.</p>
+</div>
+  {% endif %} {% endblock %}
+
+
