@@ -1,7 +1,10 @@
+import json
 from django.db import models
 from django.conf import settings
 from django.db import models
+from django.http import JsonResponse
 from django.utils import timezone
+from django.core import serializers
 from blog.utils import sendTransaction
 
 
@@ -35,8 +38,17 @@ class Post(models.Model):
         self.publishOnChain()
         super(Post, self).save()
 
-    def publishOnChain(self):
-        print('here')
-        message=f'{self.author},{self.title},{self.description}, {self.text}, {self.created_date}, {self.published_date}'
-        return sendTransaction(message)
+    def publishOnChainAsJson(self):
+        if self == None:
+            return None
+        jsonObj = {}
+        jsonObj["Author"] = str(self.author)
+        jsonObj["title"] = self.title
+        jsonObj["description"] = self.description
+        jsonObj["text"] = self.text
+        jsonObj["created_date"] = str(self.created_date)
+        jsonObj["published_date"] = str(self.published_date)
+        return sendTransaction(json.dumps(jsonObj))
+
+    
 
