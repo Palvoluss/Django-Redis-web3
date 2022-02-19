@@ -11,9 +11,11 @@
         <hr class="my3">
         <div class="flex justify-end">
             <div>
+                {% for c in category %}
                 <span class="inline block ">
-                    {{ post.category }}
+                    {{ c.title }}
                 </span>
+                {% endfor %}
             </div>
             <span class="inline block ">
                 {{ post.author }}

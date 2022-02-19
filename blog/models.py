@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from blog.utils import sendTransaction
+
 
 class Category(models.Model):
     title = models.CharField(max_length=70)
@@ -13,7 +15,7 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
-class Post(models.Model):
+class Post(models.Model): 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=80)
     description = models.CharField(max_length=200)
@@ -29,4 +31,12 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def save(self):
+        self.publishOnChain()
+        super(Post, self).save()
+
+    def publishOnChain(self):
+        print('here')
+        message=f'{self.author},{self.title},{self.description}, {self.text}, {self.created_date}, {self.published_date}'
+        return sendTransaction(message)
 

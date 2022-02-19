@@ -21,6 +21,12 @@ def post_list(request):
 def post_detail(request, post_id):
     try:
         post = Post.objects.get(pk=post_id)
+        category = post.category.all()
+        context = {
+             'post': post,
+             'category': category
+        }
     except Post.DoesNotExist:
             raise Http404('Il post che stai cercando non esiste')
-    return render(request, 'blog/post_detail.html', { 'post': post})
+    return render(request, 'blog/post_detail.html', context)
+    

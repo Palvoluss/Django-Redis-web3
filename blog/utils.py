@@ -1,11 +1,13 @@
-from web3 import Web3
-from dotenv import load_dotenv
 import os
+from pathlib import Path
+from dotenv import load_dotenv
+from web3 import Web3
 
-load_dotenv()
+env_path = Path('/Users/pablomicheletti/Desktop/S2I/DjangoRedis/.env', '.env')
+load_dotenv(dotenv_path=env_path)
 
-ADDRESS = os.environ.get('ADDRESS')
-KEY = os.environ.get('KEY')
+ADDRESS = os.getenv('ADDRESS')
+KEY = os.getenv('KEY')
 
 
 def sendTransaction(message):
