@@ -10,7 +10,7 @@ ADDRESS = os.getenv('ADDRESS')
 KEY = os.getenv('KEY')
 
 
-def sendTransaction(message):
+def sendTransactionAndGetTxId(message):
     w3 = Web3(Web3.HTTPProvider('https://ropsten.infura.io/v3/b85ca4dfafd94e1ea8f0b77e326fdc64'))
     address = ADDRESS
     privateKey = KEY

@@ -5,9 +5,9 @@
 <div class="post-card auto-center">
     <div class="card fixed block">
         <h2>{{ post.title }}</h2>
-        <hr/>
+        <hr />
         <p class="underline f2 mb3">{{ post.description }}</p>
-        <p  class="fw3">{{ post.text }}</p>
+        <p class="fw3">{{ post.text }}</p>
         <hr class="my3">
         <div class="flex justify-end">
             <div>
@@ -20,11 +20,18 @@
             <span class="inline block ">
                 {{ post.author }}
             </span>
+            <span class="inline block" 
+            style="max-width: 100px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;"
+            id="myInput"
+            onclick="copyText() ">
+                {{ post.transaction_id }}
+            </span>
         </div>
     </div>
-  {% else %}
-  <p>No post are available.</p>
+    {% else %}
+    <p>No post are available.</p>
 </div>
-  {% endif %} {% endblock %}
-
-
+{% endif %} {% endblock %}

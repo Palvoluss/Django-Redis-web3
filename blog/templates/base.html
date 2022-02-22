@@ -14,6 +14,14 @@
     <link rel="stylesheet" href="{% static 'css/blocks.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'css/util.css' %}" type="text/css" />
 
+    <script>
+      function copyText() {
+      var copyText = document.getElementById("myInput");
+      navigator.clipboard.writeText(copyText.innerText);
+      window.open('https://ropsten.etherscan.io/tx/'+copyText.innerText)
+    }
+    </script>
+
 
   </head>
   <body>
