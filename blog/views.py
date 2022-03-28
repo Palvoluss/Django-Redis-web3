@@ -2,11 +2,36 @@ from django.http import Http404, HttpResponse
 from django.template import loader
 from django.shortcuts import render
 from .models import Post
+import redis
+
+SERVER_IP = '127.0.0.1'
+SERVER_PORT = '6379'
+PASSWORD = ''
+DB = 0
+
 
 def home_layout(request):
     return render(request, 'home/home_layout.html')
 
 def home_post_list(request):
+
+    diffIP = False
+    user_email = request.user.email
+    client = redis.StrictRedis(host=SERVER_IP, 
+                                port=SERVER_PORT, 
+                                password=PASSWORD,
+                                db=DB,
+                                charset="utf-8", 
+                                decode_responses=True)
+
+    last_ip = client.get(user_email)
+    current_ip = request.META['REMOTE_ADDR']
+
+    if current_ip != last_ip:
+        client.set(user_email, current_ip)
+        if current_ip != None: 
+            diffIP = True
+
     return render(request, 'home/home_post_list.html')
 
 def home_category_list(request):

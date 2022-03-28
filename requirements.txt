@@ -2,7 +2,7 @@ Django~=3.2.10
 web3~=5.26.0
 django-crispy-forms~=1.11
 django-dajax~=0.9.2
-redis~=3.5.3
+redis
 asgiref
 attrs~=20.3.0
 base58~=2.0.1
